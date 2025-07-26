@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "ai-document-generator-backend": {
+      "main": "src/ai-document-generator-backend/main.mo",
+      "type": "motoko"
+    },
+    "ai-document-generator-frontend": {
+      "dependencies": [
+        "ai-document-generator-backend"
+      ],
+      "source": [
+        "src/ai-document-generator-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "ai-document-generator-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
