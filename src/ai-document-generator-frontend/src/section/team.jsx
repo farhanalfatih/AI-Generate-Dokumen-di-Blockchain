@@ -1,11 +1,123 @@
-import React from 'react'
+import React from "react";
+import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import Orang from "../../public/orang.png";
 
-const team = () => {
+const Team = () => {
+  const members = [
+    {
+      name: "Farhan Alfatih",
+      description: "Frontend Developer",
+      img: Orang,
+      socials: {
+        twitter: "https://twitter.com/farhan",
+        linkedin: "https://linkedin.com/in/farhan",
+        github: "https://github.com/farhan",
+      },
+    },
+    {
+      name: "Sarah Johnson",
+      description: "UI/UX Designer",
+      img: Orang,
+      socials: {
+        twitter: "https://twitter.com/sarah",
+        linkedin: "https://linkedin.com/in/sarah",
+        github: "https://github.com/sarah",
+      },
+    },
+    {
+      name: "Michael Chen",
+      description: "Blockchain Engineer",
+      img: Orang,
+      socials: {
+        twitter: "https://twitter.com/michael",
+        linkedin: "https://linkedin.com/in/michael",
+        github: "https://github.com/michael",
+      },
+    },
+    {
+      name: "Emily Davis",
+      description: "Backend Developer",
+      img: Orang,
+      socials: {
+        twitter: "https://twitter.com/emily",
+        linkedin: "https://linkedin.com/in/emily",
+        github: "https://github.com/emily",
+      },
+    },
+    {
+      name: "Alex Carter",
+      description: "Project Manager",
+      img: Orang,
+      socials: {
+        twitter: "https://twitter.com/alex",
+        linkedin: "https://linkedin.com/in/alex",
+        github: "https://github.com/alex",
+      },
+    },
+  ];
+
   return (
-    <>
-    
-    </>
-  )
-}
+    <section className="w-full py-16">
+      <h2 className="text-center text-3xl font-bold mb-12 text-white">
+        Meet Our Team
+      </h2>
 
-export default team
+      {/* Grid 3 kolom */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {members.map((m) => (
+          <div
+            key={m.name}
+            className="group relative overflow-hidden rounded-xl h-[22rem] shadow-lg"
+          >
+            {/* Foto Background */}
+            <img
+              src={m.img}
+              alt={m.name}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300" />
+
+            {/* Nama & Role → hanya muncul saat hover */}
+            <div className="absolute bottom-4 left-4 text-left opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              <h3 className="text-white font-semibold text-lg">{m.name}</h3>
+              <p className="text-gray-300 text-sm">{m.description}</p>
+            </div>
+
+            {/* Social media → kanan bawah, muncul saat hover */}
+            <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              {m.socials?.twitter && (
+                <a
+                  href={m.socials.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTwitter className="text-white text-lg hover:text-blue-400 cursor-pointer" />
+                </a>
+              )}
+              {m.socials?.linkedin && (
+                <a
+                  href={m.socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin className="text-white text-lg hover:text-blue-600 cursor-pointer" />
+                </a>
+              )}
+              {m.socials?.github && (
+                <a
+                  href={m.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub className="text-white text-lg hover:text-gray-300 cursor-pointer" />
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Team;

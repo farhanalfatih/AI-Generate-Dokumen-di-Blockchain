@@ -2,10 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaRobot, FaLock } from "react-icons/fa";
 import { SiBlockchaindotcom } from "react-icons/si";
-
+import Footer from "./components/footer/footer";
 import { AvatarCircles } from "./components/magicui/avatar-circles";
 import Tentangkami from "./section/tantangkami";
 import Layanan from "./section/layanan";
+import Team from "./section/team";
 
 const avatars = [
   { imageUrl: "https://i.pravatar.cc/40?img=1", profileUrl: "#" },
@@ -18,12 +19,12 @@ const App = () => {
   return (
     <div className="min-h-screen w-full bg-black flex flex-col overflow-x-hidden">
       {/* Hero Section */}
-      <section className="flex mt-32 flex-1 flex-col items-center justify-center text-center px-6">
+      <section id="home" className="flex mt-32 flex-1 flex-col items-center justify-center text-center px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mb-6"
+          className="flex justify-center mb-6 mt-5"
         >
           <AvatarCircles numPeople={99} avatarUrls={avatars} />
         </motion.div>
@@ -130,6 +131,13 @@ const App = () => {
       <section id="services" className="mt-20">
         <Layanan />
       </section>
+
+      <section id="team" className="mt-20">
+        <Team/>
+      </section>
+      <div  className="mt-20">
+        <Footer />
+      </div>
     </div>
   );
 };

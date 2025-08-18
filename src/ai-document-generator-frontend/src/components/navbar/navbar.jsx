@@ -60,12 +60,12 @@ const Navbar = () => {
               </a>
             </li>
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
-              <a href="#layanan" className="block">
+              <a href="#services" className="block">
                 Layanan
               </a>
             </li>
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
-              <a href="#proyek" className="block">
+              <a href="#team" className="block">
                 Team
               </a>
             </li>
@@ -85,7 +85,6 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Burger / Close Icon */}
           <i
             className={`${
               show ? "ri-close-line" : "ri-menu-3-line"
