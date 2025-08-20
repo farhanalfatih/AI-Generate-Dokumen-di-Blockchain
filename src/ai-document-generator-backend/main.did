@@ -1,0 +1,6 @@
+service : {
+  increment: () -> (nat);
+  getValue: () -> (nat) query;
+  reset: () -> (nat);
+  setValue: (nat) -> (nat);
+}
