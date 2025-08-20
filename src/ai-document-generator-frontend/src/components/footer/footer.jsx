@@ -7,7 +7,7 @@ const Footer = () => {
             <footer className="bg-black  text-white p-10 flex flex-wrap justify-between gap-5">
                 {/* Bagian Media Sosial */}
                 <div className="min-w-[250px]">
-                    <h3 className="text-xl mb-4 border-b-2 border-gray-400 inline-block pb-1">Social Media</h3>
+                    <h3 className="text-xl mb-4 border-b-2 border-gray-400 inline-block pb-1"></h3>
                     <div className="flex gap-4">
                     <a
                             href="https://github.com/farhanalfatih"

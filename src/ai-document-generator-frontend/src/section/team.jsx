@@ -58,9 +58,13 @@ const Team = () => {
 
   return (
     <section className="w-full py-16">
-      <h2 className="text-center text-3xl font-bold mb-12 text-white">
-        Meet Our Team
-      </h2>
+      <div className="flex flex-col items-center text-center mb-10">
+        <h2 className="text-3xl font-bold mb-6 text-white">Meet Our Team</h2>
+        <p className="text-gray-400 text-sm md:text-base max-w-2xl">
+          Meet the dedicated professionals behind our project. Each member
+          brings unique expertise to deliver innovation and reliability.
+        </p>
+      </div>
 
       {/* Grid 3 kolom */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">

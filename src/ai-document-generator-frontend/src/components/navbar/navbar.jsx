@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "remixicon/fonts/remixicon.css";
+import Login from "../../components/login/login";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -43,25 +44,26 @@ const Navbar = () => {
           </div>
 
           {/* Menu */}
+          {/* Menu */}
           <ul
             className={`flex lg:gap-8 md:static md:flex-row md:shadow-none md:bg-transparent md:w-auto md:h-full md:translate-y-0 ${
               scroll ? "md:text-white" : "md:text-white"
             } gap-6 fixed ${menuAktive} top-0 w-3/4 h-full flex-col py-6 rounded-l-lg shadow-lg bg-black font-bold text-white 
-            transition-all duration-300 text-sm  z-40`}
+  transition-all duration-300 text-sm  z-40`}
           >
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
               <a href="#home" className="block">
-                Beranda
+                Home
               </a>
             </li>
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
               <a href="#about" className="block">
-                Tentang Kami
+                About Us
               </a>
             </li>
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
               <a href="#services" className="block">
-                Layanan
+                Services
               </a>
             </li>
             <li className="font-bold opacity-90 hover:opacity-100 px-3 py-1">
@@ -69,20 +71,20 @@ const Navbar = () => {
                 Team
               </a>
             </li>
+
+            {/* 🔥 Login khusus HP */}
+            <li className="block md:hidden px-3 py-4">
+              <Login />
+            </li>
           </ul>
 
-          {/* Sosial Media */}
+          {/* Sosial Media / Login khusus Desktop */}
           <div
-            className={`sosial hidden md:flex items-center gap-2 ${
+            className={`sosial hidden md:flex items-center left-10 gap-2 ${
               scroll ? "text-black" : "text-white"
             }`}
           >
-            <a
-              href=""
-              className="px-3 py-3 rounded-xl  text-white font-semibold transition"
-            >
-              Login <i class="ri-login-box-line text-white text-2xl"></i>
-            </a>
+            <Login />
           </div>
 
           <i
