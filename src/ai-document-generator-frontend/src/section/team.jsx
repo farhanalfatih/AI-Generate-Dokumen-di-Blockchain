@@ -1,6 +1,8 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import Orang from "../../public/orang.png";
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
+import HikmawanImg from "./mawan.jpg";
 
 const Team = () => {
   const members = [
@@ -15,17 +17,17 @@ const Team = () => {
       },
     },
     {
-      name: "Sarah Johnson",
-      description: "UI/UX Designer",
-      img: Orang,
+      name: "Hikmawan Pola Parikesit",
+      description: "Fullstack Developer",
+      img: HikmawanImg,
       socials: {
-        twitter: "https://twitter.com/sarah",
-        linkedin: "https://linkedin.com/in/sarah",
-        github: "https://github.com/sarah",
+        instagram: "https://www.instagram.com/wan.capture/",
+        linkedin: "https://www.linkedin.com/in/hikmawan-polaparikesit/",
+        github: "https://github.com/hikmawanpola ",
       },
     },
     {
-      name: "Michael Chen",
+      name: "Alvin Yusuf Riziq",
       description: "Blockchain Engineer",
       img: Orang,
       socials: {
@@ -35,7 +37,7 @@ const Team = () => {
       },
     },
     {
-      name: "Emily Davis",
+      name: "Arsya",
       description: "Backend Developer",
       img: Orang,
       socials: {
@@ -89,15 +91,16 @@ const Team = () => {
 
             {/* Social media → kanan bawah, muncul saat hover */}
             <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-              {m.socials?.twitter && (
+              {m.socials?.instagram && (
                 <a
-                  href={m.socials.twitter}
+                  href={m.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaTwitter className="text-white text-lg hover:text-blue-400 cursor-pointer" />
+                  <InstagramLogoIcon className="text-white text-lg hover:text-pink-400 cursor-pointer" />
                 </a>
               )}
+
               {m.socials?.linkedin && (
                 <a
                   href={m.socials.linkedin}

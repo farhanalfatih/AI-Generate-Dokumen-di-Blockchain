@@ -1,0 +1,26 @@
+{
+  "name": "ai-chatbot-server",
+  "version": "1.0.0",
+  "description": "Express server for AI chatbot",
+  "main": "server.js",
+  "type": "module",
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": [
+    "ai",
+    "chatbot",
+    "express",
+    "openrouter"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

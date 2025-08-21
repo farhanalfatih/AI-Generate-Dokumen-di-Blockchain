@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>IC Hello Starter</title>
+    <base href="/" />
+    <link rel="icon" href="/favicon.ico" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>IC Hello Starter</title>
-  <base href="/" />
-  <link rel="icon" href="/favicon.ico" />
-</head>
-
-<body>
-  <div class="browser-warning">
-    ⚠️ If this page appears broken, try reloading. If the problem persists, try switching browsers; Chrome or
-    Firefox are recommended.
-  </div>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+  <body>
+    <div class="browser-warning">
+      ⚠️ If this page appears broken, try reloading. If the problem persists,
+      try switching browsers; Chrome or Firefox are recommended.
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
+<script>
+  import { createActor } from "../../declarations/backend";
+  // path ini otomatis dibuat setelah `dfx deploy`
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, "user");
+    input.value = "";
+
+    try {
+      const reply = await createActor.chat(text); // call canister Motoko
+      addMessage(reply, "bot");
+    } catch (err) {
+      addMessage("⚠️ Error call canister", "bot");
+      console.error(err);
+    }
+  }
+</script>

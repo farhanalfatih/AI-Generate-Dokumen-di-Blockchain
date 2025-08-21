@@ -2,7 +2,7 @@ import Debug "mo:base/Debug";
 import Array "mo:base/Array";
 import Text "mo:base/Text";
 
-persistent actor Main {
+persistent actor Chatbot {
     // Simpan riwayat chat
     private stable var history : [(Text, Text)] = [];
 

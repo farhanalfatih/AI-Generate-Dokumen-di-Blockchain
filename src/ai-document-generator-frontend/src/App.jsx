@@ -7,6 +7,7 @@ import { AvatarCircles } from "./components/magicui/avatar-circles";
 import Tentangkami from "./section/tantangkami";
 import Layanan from "./section/layanan";
 import Team from "./section/team";
+import ChatbotOverlay from "./components/ChatbotOverlay"; // import ChatbotOverlay
 
 const avatars = [
   { imageUrl: "https://i.pravatar.cc/40?img=1", profileUrl: "#" },
@@ -50,8 +51,7 @@ const App = () => {
           transition={{ delay: 0.3, duration: 0.7 }}
           className="text-gray-400 mt-4 text-sm md:text-base max-w-2xl"
         >
-          A modern solution for creating
-          secure, fast, and decentralized{" "}
+          A modern solution for creating secure, fast, and decentralized{" "}
           <span className="text-sky-500">
             AI-powered documents on the blockchain.
           </span>
@@ -144,8 +144,11 @@ const App = () => {
         <Team />
       </section>
 
-      <div className="mt-20">
+      {/* Footer */}
+      <div className="mt-20 relative">
         <Footer />
+        {/* Chatbot Overlay */}
+        <ChatbotOverlay />
       </div>
     </div>
   );

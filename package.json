@@ -14,5 +14,12 @@
   "type": "module",
   "workspaces": [
     "src/ai-document-generator-frontend"
-  ]
+  ],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2",
+    "react-markdown": "^10.1.0"
+  }
 }

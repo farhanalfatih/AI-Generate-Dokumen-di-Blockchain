@@ -1,6 +1,5 @@
 service : {
-  increment: () -> (nat);
-  getValue: () -> (nat) query;
-  reset: () -> (nat);
-  setValue: (nat) -> (nat);
+  chat: (text) -> (text);
+  getHistory: () -> (vec (text, text)) query;
+  reset: () -> ();
 }

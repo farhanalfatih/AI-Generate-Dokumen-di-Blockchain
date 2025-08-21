@@ -1,0 +1,142 @@
+<!-- Chatbot Button -->
+<div
+  id="chatbot-toggle"
+  style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4f46e5;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-weight: bold;
+  "
+>
+  💬
+</div>
+
+<!-- Chatbot Window -->
+<div
+  id="chatbot-window"
+  style="
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    height: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+  "
+>
+  <!-- Header -->
+  <div
+    id="chatbot-header"
+    style="
+      background: #4f46e5;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+    "
+  >
+    AI Chatbot
+    <span id="chatbot-close" style="float: right; cursor: pointer">❌</span>
+  </div>
+
+  <!-- Messages -->
+  <div
+    id="chatbot-messages"
+    style="flex: 1; padding: 10px; overflow-y: auto; font-size: 14px"
+  ></div>
+
+  <!-- Input -->
+  <div style="display: flex; border-top: 1px solid #ddd">
+    <input
+      id="chatbot-input"
+      type="text"
+      placeholder="Tulis pesan..."
+      style="flex: 1; padding: 10px; border: none; outline: none"
+    />
+    <button
+      id="chatbot-send"
+      style="
+        background: #4f46e5;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+      "
+    >
+      Send
+    </button>
+  </div>
+</div>
+
+<script type="module">
+  import { backend } from "../../ai-document-generator-backend";
+
+  const toggle = document.getElementById("chatbot-toggle");
+  const windowEl = document.getElementById("chatbot-window");
+  const closeBtn = document.getElementById("chatbot-close");
+  const header = document.getElementById("chatbot-header");
+  const messages = document.getElementById("chatbot-messages");
+  const input = document.getElementById("chatbot-input");
+  const sendBtn = document.getElementById("chatbot-send");
+
+  // Toggle window open/close
+  toggle.onclick = () => (windowEl.style.display = "flex");
+  closeBtn.onclick = () => (windowEl.style.display = "none");
+  header.onclick = () => {
+    // klik header juga bisa toggle
+    windowEl.style.display =
+      windowEl.style.display === "flex" ? "none" : "flex";
+  };
+
+  function addMessage(text, sender = "user") {
+    const div = document.createElement("div");
+    div.textContent = text;
+    div.style.margin = "5px 0";
+    div.style.padding = "8px";
+    div.style.borderRadius = "8px";
+    div.style.maxWidth = "80%";
+    if (sender === "user") {
+      div.style.background = "#e0e7ff";
+      div.style.alignSelf = "flex-end";
+    } else {
+      div.style.background = "#f3f4f6";
+      div.style.alignSelf = "flex-start";
+    }
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, "user");
+    input.value = "";
+
+    try {
+      const reply = await backend.chat(text); // panggil canister Motoko
+      addMessage(reply, "bot");
+    } catch (err) {
+      addMessage("⚠️ Error call canister", "bot");
+      console.error(err);
+    }
+  }
+
+  sendBtn.onclick = sendMessage;
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+</script>
