@@ -4,4 +4,3 @@ service : {
   reset: () -> (nat);
   setValue: (nat) -> (nat);
 }
-s
