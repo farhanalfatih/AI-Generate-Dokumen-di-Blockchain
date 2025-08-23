@@ -12,7 +12,17 @@
         "src/ai-document-generator-frontend/dist"
       ],
       "type": "assets",
-      "workspace": "ai-document-generator-frontend"
+      "workspace": "ai-document-generator-frontend",
+      "csp": {
+        "connect-src": [
+          "'self'",
+          "http://localhost:*",
+          "http://127.0.0.1:*",
+          "https://icp0.io",
+          "https://*.icp0.io",
+          "https://icp-api.io"
+        ]
+      }
     }
   },
   "defaults": {

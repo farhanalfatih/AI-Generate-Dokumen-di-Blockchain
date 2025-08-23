@@ -19,7 +19,6 @@ const avatars = [
 const App = () => {
   return (
     <div className="min-h-screen w-full bg-black flex flex-col overflow-x-hidden">
-      {/* Hero Section */}
       <section
         id="home"
         className="flex mt-32 flex-1 flex-col items-center justify-center text-center px-6"
@@ -65,13 +64,13 @@ const App = () => {
           className="flex mt-8 gap-4 flex-wrap justify-center"
         >
           <a
-            href="#get-started"
+            href="/uploud"
             className="px-5 py-3 rounded-xl bg-sky-500 text-white font-semibold hover:bg-sky-600 transition"
           >
             Get Started
           </a>
           <a
-            href="#vote"
+            href="#"
             className="px-5 py-3 rounded-xl border border-sky-500 text-sky-500 font-semibold hover:bg-sky-500 hover:text-white transition"
           >
             Support

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import Orang from "../../public/orang.png";
 
 const Team = () => {
@@ -9,49 +9,49 @@ const Team = () => {
       description: "Frontend Developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/farhan",
-        linkedin: "https://linkedin.com/in/farhan",
-        github: "https://github.com/farhan",
+        instagram: "https://www.instagram.com/aalnaaaaaa/",
+        linkedin: "https://www.linkedin.com/in/farhan-alfatih/",
+        github: "https://github.com/farhanalfatih",
       },
     },
     {
-      name: "Sarah Johnson",
-      description: "UI/UX Designer",
+      name: "Hikmawan Pola Parikesit",
+      description: "Backend Developer (AI)",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/sarah",
-        linkedin: "https://linkedin.com/in/sarah",
-        github: "https://github.com/sarah",
+        instagram: "https://www.instagram.com/wan.capture/",
+        linkedin: "https://www.linkedin.com/in/hikmawan-polaparikesit/",
+        github: "https://github.com/hikmawanpola",
       },
     },
     {
-      name: "Michael Chen",
-      description: "Blockchain Engineer",
+      name: "Arsya",
+      description: "Backend Smart Contract",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/michael",
-        linkedin: "https://linkedin.com/in/michael",
-        github: "https://github.com/michael",
+        instagram: "#",
+        linkedin: "#",
+        github: "#",
       },
     },
     {
-      name: "Emily Davis",
+      name: "Alvin",
+      description: "Backend Developer (AI)",
+      img: Orang,
+      socials: {
+        instagram: "#",
+        linkedin: "#",
+        github: "#",
+      },
+    },
+    {
+      name: "rifqi",
       description: "Backend Developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/emily",
-        linkedin: "https://linkedin.com/in/emily",
-        github: "https://github.com/emily",
-      },
-    },
-    {
-      name: "Alex Carter",
-      description: "Project Manager",
-      img: Orang,
-      socials: {
-        twitter: "https://twitter.com/alex",
-        linkedin: "https://linkedin.com/in/alex",
-        github: "https://github.com/alex",
+        instagram: "#",
+        linkedin: "#",
+        github: "#",
       },
     },
   ];
@@ -89,13 +89,13 @@ const Team = () => {
 
             {/* Social media → kanan bawah, muncul saat hover */}
             <div className="absolute bottom-4 right-4 flex gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-              {m.socials?.twitter && (
+              {m.socials?.instagram && (
                 <a
-                  href={m.socials.twitter}
+                  href={m.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <FaTwitter className="text-white text-lg hover:text-blue-400 cursor-pointer" />
+                  <FaInstagram className="text-white text-lg hover:text-pink-500 cursor-pointer" />
                 </a>
               )}
               {m.socials?.linkedin && (

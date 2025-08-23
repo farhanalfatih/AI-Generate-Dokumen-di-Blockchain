@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './App';
-import Upload from './page/upload/page'
-
-function NotFound() { return <h1>404 — Not Found</h1> }
+import Upload from './page/upload/page';
+import NotFound from './page/404/page'
 
 const Overlay = () => {
   return (

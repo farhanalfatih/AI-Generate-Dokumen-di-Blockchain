@@ -10,6 +10,8 @@ interface AvatarCirclesProps {
   avatarUrls: Avatar[];
 }
 
+var numPeople = 5
+
 export const AvatarCircles = ({
   numPeople,
   className,
@@ -37,7 +39,7 @@ export const AvatarCircles = ({
       {(numPeople ?? 0) > 0 && (
         <a
           className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-black text-center text-xs font-medium text-white hover:bg-gray-600 dark:border-gray-800 dark:bg-white dark:text-black"
-          href=""
+          href="https://github.com/farhanalfatih/AI-Generate-Dokumen-di-Blockchain"
         >
           +{numPeople}
         </a>
