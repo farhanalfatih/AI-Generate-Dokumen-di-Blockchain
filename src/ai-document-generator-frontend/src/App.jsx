@@ -65,7 +65,7 @@ const App = () => {
           className="flex mt-8 gap-4 flex-wrap justify-center"
         >
           <a
-            href="#get-started"
+            href="/uploud"
             className="px-5 py-3 rounded-xl bg-sky-500 text-white font-semibold hover:bg-sky-600 transition"
           >
             Get Started
