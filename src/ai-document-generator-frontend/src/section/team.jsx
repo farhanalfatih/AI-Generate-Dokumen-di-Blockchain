@@ -2,7 +2,6 @@ import React from "react";
 import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import Orang from "../../public/orang.png";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
-import HikmawanImg from "./mawan.jpg";
 
 const Team = () => {
   const members = [
@@ -19,7 +18,7 @@ const Team = () => {
     {
       name: "Hikmawan Pola Parikesit",
       description: "Fullstack Developer",
-      img: HikmawanImg,
+      img: Orang,
       socials: {
         instagram: "https://www.instagram.com/wan.capture/",
         linkedin: "https://www.linkedin.com/in/hikmawan-polaparikesit/",
