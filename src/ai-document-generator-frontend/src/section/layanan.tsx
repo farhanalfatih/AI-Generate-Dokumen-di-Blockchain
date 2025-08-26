@@ -43,9 +43,7 @@ const Layanan = () => {
             A dedicated AI assistant to help you create agreements and documents.
           </p>
         </motion.div>
-
-        {/* Middle → Navigate to /upload */}
-        <motion.div
+                <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/upload")}
