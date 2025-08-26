@@ -314,3 +314,13 @@ Content-Type: application/json
 }
 Response: PDF download
 ```
+
+🛣️ Roadmap
+
+ Premium templates untuk dokumen legal
+
+ Verifikasi dokumen berbasis NFT
+
+ Integrasi DAO & multi-sig signing
+
+ Marketplace dokumen legal siap pakai
