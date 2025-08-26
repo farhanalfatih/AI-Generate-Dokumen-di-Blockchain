@@ -324,3 +324,9 @@ Response: PDF download
  Integrasi DAO & multi-sig signing
 
  Marketplace dokumen legal siap pakai
+
+📬 Support
+
+Open issue di repo ini
+
+Hubungi tim dev di Discord/instagram
