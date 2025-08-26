@@ -18,8 +18,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
+    "ethers": "^6.15.0",
     "express": "^5.1.0",
     "node-fetch": "^3.3.2",
-    "react-markdown": "^10.1.0"
+    "pdfkit": "^0.17.1",
+    "react-markdown": "^10.1.0",
+    "web3": "^4.16.0"
   }
 }

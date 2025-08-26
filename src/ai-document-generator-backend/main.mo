@@ -1,11 +1,71 @@
+import Debug "mo:base/Debug";
 import Nat "mo:base/Nat";
 import Int "mo:base/Int";
 import Time "mo:base/Time";
 import Blob "mo:base/Blob";
 import Principal "mo:base/Principal";
 import Array "mo:base/Array";
+import Text "mo:base/Text";
 
-actor {
+persistent actor {
+  // ==============================
+  // ====== Bagian Chat ===========
+  // ==============================
+
+  // Simpan riwayat chat
+  private stable var history : [(Text, Text)] = [];
+
+  // Fungsi untuk mengecek apakah pesan mengandung kata tertentu
+  private func contains(text: Text, word: Text) : Bool {
+    Text.contains(text, #text word)
+  };
+
+  // Fungsi utama chat
+  public func chat(prompt: Text) : async Text {
+    let lowerPrompt = Text.toLowercase(prompt);
+
+    let reply = if (contains(lowerPrompt, "hi") or contains(lowerPrompt, "hello")) {
+      "Hello! 👋 How can I help you today?"
+    } else if (contains(lowerPrompt, "who are you")) {
+      "I'm an AI chatbot running on Internet Computer!"
+    } else if (contains(lowerPrompt, "help")) {
+      "You can ask me anything. Try saying hi, asking who I am, or any other question!"
+    } else if (contains(lowerPrompt, "bye") or contains(lowerPrompt, "goodbye")) {
+      "Goodbye! 👋 Thanks for chatting!"
+    } else {
+      "🤖 Thanks for your message: \"" # prompt # "\". I'm a simple chatbot, ask me anything!"
+    };
+
+    // Simpan ke riwayat
+    history := Array.append(history, [(prompt, reply)]);
+
+    // Log untuk debug
+    Debug.print("User: " # prompt);
+    Debug.print("Bot: " # reply);
+
+    reply
+  };
+
+  // Ambil semua riwayat chat
+  public query func getHistory() : async [(Text, Text)] {
+    history
+  };
+
+  // Hapus semua riwayat
+  public func clearHistory() : async () {
+    history := [];
+    Debug.print("History cleared");
+  };
+
+  // Hitung jumlah percakapan
+  public query func getHistoryCount() : async Nat {
+    Array.size(history)
+  };
+
+  // ==============================
+  // ====== Bagian File ===========
+  // ==============================
+
   public type DocMeta = {
     id : Nat;
     name : Text;
@@ -19,7 +79,7 @@ actor {
   stable var fileContents : [(Nat, Blob)] = [];
   stable var nextId : Nat = 0;
 
-  // ✅ Ambil principal dari caller, tidak perlu dikirim dari FE
+  // Upload file
   public shared (msg) func upload_file(name : Text, bytes : [Nat8]) : async Nat {
     let id = nextId;
     nextId += 1;
@@ -29,7 +89,6 @@ actor {
     let meta : DocMeta = {
       id = id;
       name = name;
-      // Blob tidak punya .size → hitung dari array byte
       size = Array.size(bytes);
       uploaded_at = Time.now();
       uploader = msg.caller;
@@ -42,7 +101,7 @@ actor {
     id
   };
 
-  // Opsional: set display name untuk semua file yang diupload caller
+  // Set display name uploader
   public shared (msg) func set_display_name(name : Text) : async () {
     files := Array.map<DocMeta, DocMeta>(files, func (f : DocMeta) : DocMeta {
       if (f.uploader == msg.caller) {
@@ -60,18 +119,17 @@ actor {
     });
   };
 
+  // List semua file
   public query func list_files() : async [DocMeta] {
     files
   };
 
-  // ✅ Kembalikan ?(Text, [Nat8]) sesuai IDL
+  // Ambil file berdasarkan id
   public query func get_file(id : Nat) : async ?(Text, [Nat8]) {
     var result : ?(Text, [Nat8]) = null;
 
-    // cari blob konten
     label outer for ((fid, content) in fileContents.vals()) {
       if (fid == id) {
-        // cari meta utk ambil nama
         for (m in files.vals()) {
           if (m.id == id) {
             result := ?(m.name, Blob.toArray(content));

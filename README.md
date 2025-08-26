@@ -1,59 +1,316 @@
-# `ai-document-generator`
+# 🚀 AI Document Generator with Blockchain Integration
 
-Welcome to your new `ai-document-generator` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-green)](https://nodejs.org/)
+[![Internet Computer](https://img.shields.io/badge/Blockchain-DFX-orange)](https://internetcomputer.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+**AI-powered document generator with blockchain integration for security, transparency, and immutable storage.**
 
-To learn more before you start working with `ai-document-generator`, see the following documentation available online:
+---
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+## 📋 Table of Contents
 
-If you want to start working on your project right away, you might want to try the following commands:
+- [Features](#features)
+- [System Architecture](#system-architecture)
+- [Prerequisites](#prerequisites)
+- [Installation & Setup](#installation--setup)
+- [Running the Application](#running-the-application)
+- [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
+- [API Reference](#api-reference)
+- [Security Best Practices](#security-best-practices)
+- [Performance Tips](#performance-tips)
+- [Changelog](#changelog)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Support](#support)
+
+---
+
+## ✨ Features
+
+- 🤖 **AI Document Generation** – Generate contracts and agreements from natural language prompts.
+- ⛓️ **Blockchain Integration** – Upload and verify documents on-chain.
+- 📄 **PDF Export** – Professional PDF output with consistent formatting.
+- 🚦 **Rate Limiting** – Built-in queue system to prevent `429` errors.
+- 🔄 **Auto Retry** – Automatic retries with exponential backoff on failures.
+- 💾 **Secure Storage** – Encrypted and immutable document storage via blockchain.
+
+---
+
+## 🏗️ System Architecture
+
+Frontend (React) ←→ AI Proxy Server (Port 3001) ←→ OpenRouter API
+↓
+PDF Generator Server (Port 4000) ←→ Blockchain Network
+
+markdown
+Copy
+Edit
+
+---
+
+## 📦 Prerequisites
+
+Make sure your system has the following:
+
+- **Node.js** >= 18.0.0
+- **npm** >= 8.0.0 or **yarn**
+- **DFX SDK** (for Internet Computer blockchain deployment)
+- **Git**
+- **OpenRouter API Key** (free at [OpenRouter.ai](https://openrouter.ai))
+
+### Version Check
 
 ```bash
-cd ai-document-generator/
-dfx help
-dfx canister --help
-```
+node --version    # >= 18.0.0
+npm --version     # >= 8.0.0
+dfx --version     # >= 0.15.0
+🛠️ Installation & Setup
+1. Clone Repository
+bash
+Copy
+Edit
+git clone <repository-url>
+cd ai-document-generator
+2. Install Dependencies
+Backend Servers
 
-## Running the project locally
+bash
+Copy
+Edit
+# AI Proxy Server
+cd ai-proxy-server
+npm install express node-fetch cors dotenv
 
-If you want to test your project locally, you can use the following commands:
+# PDF Generator Server
+cd ../pdf-generator-server
+npm install express cors node-fetch pdfkit dotenv
+Frontend
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+bash
+Copy
+Edit
+cd ../frontend
+npm install
+# or
+yarn install
+3. Configure Environment Variables
+Create .env files in each server:
 
-# Deploys your canisters to the replica and generates your candid interface
+ai-proxy-server/.env
+
+env
+Copy
+Edit
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+NODE_ENV=development
+PORT=3001
+pdf-generator-server/.env
+
+env
+Copy
+Edit
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+NODE_ENV=development
+PORT=4000
+Obtain your API key from OpenRouter.ai → Dashboard → API Keys.
+
+4. Setup Blockchain (DFX)
+Install DFX:
+
+bash
+Copy
+Edit
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+Run local network and deploy:
+
+bash
+Copy
+Edit
+dfx start --background --clean
 dfx deploy
+Production deployment:
+
+bash
+Copy
+Edit
+dfx deploy --network ic
+🚀 Running the Application
+Option 1: Manual (3 separate terminals)
+bash
+Copy
+Edit
+# Terminal 1: AI Proxy Server
+cd ai-proxy-server && npm start
+
+# Terminal 2: PDF Generator Server
+cd pdf-generator-server && npm start
+
+# Terminal 3: Frontend React App
+cd frontend && npm start
+Option 2: Using Concurrently (recommended)
+bash
+Copy
+Edit
+npm install -g concurrently
+Add to root package.json:
+
+json
+Copy
+Edit
+{
+  "scripts": {
+    "dev": "concurrently \"cd ai-proxy-server && npm start\" \"cd pdf-generator-server && npm start\" \"cd frontend && npm start\"",
+    "start:ai": "cd ai-proxy-server && npm start",
+    "start:pdf": "cd pdf-generator-server && npm start",
+    "start:frontend": "cd frontend && npm start"
+  }
+}
+Run:
+
+bash
+Copy
+Edit
+npm run dev
+Verify Services
+bash
+Copy
+Edit
+curl http://localhost:3001/health   # AI Proxy Server
+curl http://localhost:4000/health   # PDF Generator Server
+open http://localhost:3000          # Frontend
+📖 Usage
+1. Generate Documents with AI
+Open http://localhost:3000
+
+Select AI Document Generator
+
+Enter a detailed prompt, e.g.:
+
+sql
+Copy
+Edit
+Create a one-year rental agreement between
+John Doe (tenant) and Jane Smith (landlord),
+rent: $500/month, location: 123 Liberty St, New York.
+Click Generate PDF → wait for processing
+
+A PDF will be automatically downloaded
+
+2. Upload Documents to Blockchain
+Click Upload to Blockchain
+
+Select your generated PDF file
+
+File will be encrypted & stored on-chain
+
+Receive transaction hash for verification
+
+3. Prompt Tips
+✅ Good Prompt:
+
+yaml
+Copy
+Edit
+Create a permanent employment contract:
+- Name: Michael Johnson
+- Position: Software Engineer
+- Salary: $5,000/month
+- Start Date: January 1, 2024
+- Company: Tech Innovators Inc.
+❌ Poor Prompt:
+
+css
+Copy
+Edit
+Create a job contract
+🔧 Troubleshooting
+Rate Limit 429
+The app includes a queue system + auto-retry
+
+Check queue status: http://localhost:3001/queue-status
+
+Server Port Conflicts
+bash
+Copy
+Edit
+lsof -i :3001
+lsof -i :4000
+lsof -i :3000
+kill -9 <PID>
+API Key Error
+Ensure .env exists in both server folders
+
+Validate API key on OpenRouter.ai
+
+Restart servers
+
+DFX Issues
+bash
+Copy
+Edit
+dfx stop
+dfx start --background --clean
+dfx deploy
+Frontend Build Error
+bash
+Copy
+Edit
+rm -rf node_modules package-lock.json
+npm install
+# or with yarn
+rm -rf node_modules yarn.lock
+yarn install
+📡 API Reference
+AI Proxy Server (Port 3001)
+Health Check
+
+http
+Copy
+Edit
+GET /health
+json
+Copy
+Edit
+{
+  "status": "ok",
+  "timestamp": "2024-01-01T00:00:00Z",
+  "hasApiKey": true,
+  "queueLength": 0
+}
+Chat/Generate
+
+http
+Copy
+Edit
+POST /chat
+Content-Type: application/json
+{
+  "prompt": "Your prompt here"
+}
+PDF Generator Server (Port 4000)
+Generate Text
+
+http
+Copy
+Edit
+POST /generate-text
+json
+Copy
+Edit
+{
+  "prompt": "Document request"
+}
+Generate PDF
+
+http
+Copy
+Edit
+POST /generate-pdf
+Content-Type: application/json
+{
+  "aiText": "Document content"
+}
+Response: PDF download
 ```
-
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
-
-If you have made changes to your backend canister, you can generate a new candid interface with
-
-```bash
-npm run generate
-```
-
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
-
-If you are making frontend changes, you can start a development server with
-
-```bash
-npm start
-```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
