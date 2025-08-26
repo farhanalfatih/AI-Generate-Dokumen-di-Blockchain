@@ -7,14 +7,15 @@ import { AvatarCircles } from "./components/magicui/avatar-circles";
 import Tentangkami from "./section/tantangkami";
 import Layanan from "./section/layanan";
 import Team from "./section/team";
-import ChatbotOverlay from "./components/ChatbotOverlay"; // import ChatbotOverlay
+import ChatbotOverlay from "./components/ChatbotOverlay";
+import orang from '../public/orang.png'
 
 const avatars = [
-  { imageUrl: "https://i.pravatar.cc/40?img=1", profileUrl: "#" },
-  { imageUrl: "https://i.pravatar.cc/40?img=2", profileUrl: "#" },
-  { imageUrl: "https://i.pravatar.cc/40?img=3", profileUrl: "#" },
-  { imageUrl: "https://i.pravatar.cc/40?img=4", profileUrl: "#" },
-  { imageUrl: "https://i.pravatar.cc/40?img=5", profileUrl: "#" },
+  { imageUrl: orang, profileUrl: "https://github.com/farhanalfatih" },
+  { imageUrl: orang, profileUrl: "https://github.com/hikmawanpola" },
+  { imageUrl: orang, profileUrl: "https://github.com/alvinyusuf" },
+  { imageUrl: orang, profileUrl: "#" },
+  { imageUrl: orang, profileUrl: "#" },
 ];
 
 const App = () => {

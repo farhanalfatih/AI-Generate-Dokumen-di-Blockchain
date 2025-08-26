@@ -1,7 +1,6 @@
 import React from "react";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import Orang from "../../public/orang.png";
-import { InstagramLogoIcon } from "@radix-ui/react-icons";
 
 const Team = () => {
   const members = [
@@ -10,14 +9,14 @@ const Team = () => {
       description: "Frontend Developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/farhan",
-        linkedin: "https://linkedin.com/in/farhan",
-        github: "https://github.com/farhan",
+        instagram: "https://www.instagram.com/aalnaaaaaa/",
+        linkedin: "https://www.linkedin.com/in/farhan-alfatih/",
+        github: "https://github.com/farhanalfatih",
       },
     },
     {
       name: "Hikmawan Pola Parikesit",
-      description: "Fullstack Developer",
+      description: "backend (ai) developer",
       img: Orang,
       socials: {
         instagram: "https://www.instagram.com/wan.capture/",
@@ -27,32 +26,32 @@ const Team = () => {
     },
     {
       name: "Alvin Yusuf Riziq",
-      description: "Blockchain Engineer",
+      description: "backend (ai) developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/michael",
-        linkedin: "https://linkedin.com/in/michael",
-        github: "https://github.com/michael",
+        instagram: "https://www.instagram.com/vlvyn_?igsh=YmN6bmJmaTUwNTRu",
+        linkedin: "https://www.linkedin.com/in/alvin-yusuf-riziq/",
+        github: "https://github.com/alvinyusuf",
       },
     },
     {
       name: "Arsya",
-      description: "Backend Developer",
+      description: "backend smart contract developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/emily",
-        linkedin: "https://linkedin.com/in/emily",
-        github: "https://github.com/emily",
+        instagram: "#",
+        linkedin: "#",
+        github: "#",
       },
     },
     {
-      name: "Alex Carter",
-      description: "Project Manager",
+      name: "rifqi",
+      description: "backend developer",
       img: Orang,
       socials: {
-        twitter: "https://twitter.com/alex",
-        linkedin: "https://linkedin.com/in/alex",
-        github: "https://github.com/alex",
+        instagram: "#",
+        linkedin: "#",
+        github: "#",
       },
     },
   ];
@@ -96,7 +95,7 @@ const Team = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <InstagramLogoIcon className="text-white text-lg hover:text-pink-400 cursor-pointer" />
+                  <FaInstagram className="text-white text-lg hover:text-pink-500 cursor-pointer" />
                 </a>
               )}
 
