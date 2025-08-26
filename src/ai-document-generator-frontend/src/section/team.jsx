@@ -16,7 +16,7 @@ const Team = () => {
     },
     {
       name: "Hikmawan Pola Parikesit",
-      description: "backend (ai) developer",
+      description: "(ai) developer",
       img: Orang,
       socials: {
         instagram: "https://www.instagram.com/wan.capture/",
